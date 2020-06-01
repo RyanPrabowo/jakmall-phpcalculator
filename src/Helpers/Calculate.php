@@ -9,6 +9,9 @@ function getOperator($command): string
         case 'multiply':
             $operator = '*';
             break;
+        case 'divide':
+            $operator = '/';
+            break;
         default:
             $operator = '+';
             break;
