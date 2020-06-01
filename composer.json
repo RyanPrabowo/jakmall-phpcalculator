@@ -14,7 +14,10 @@
     "autoload": {
         "psr-4": {
             "Jakmall\\Recruitment\\Calculator\\": "src/"
-        }
+        },
+        "files": [
+            "src/Helpers/Calculate.php"
+        ]
     },
     "config": {
         "preferred-install": "dist",
