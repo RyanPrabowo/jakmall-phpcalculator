@@ -6,6 +6,9 @@ function getOperator($command): string
         case 'subtract':
             $operator = '-';
             break;
+        case 'multiply':
+            $operator = '*';
+            break;
         default:
             $operator = '+';
             break;
