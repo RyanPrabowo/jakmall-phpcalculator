@@ -43,7 +43,7 @@ class AddCommand extends Command
     {
         $numbers = $this->getInput();
         $description = $this->generateCalculationDescription($numbers);
-        $result = $this->calculateAll($numbers);
+        $result = calc($description);
 
         $this->comment(sprintf('%s = %s', $description, $result));
     }
@@ -55,41 +55,10 @@ class AddCommand extends Command
 
     protected function generateCalculationDescription(array $numbers): string
     {
-        $operator = $this->getOperator();
+        $command = $this->argument('command');
+        $operator = getOperator($command);
         $glue = sprintf(' %s ', $operator);
 
         return implode($glue, $numbers);
-    }
-
-    protected function getOperator(): string
-    {
-        return '+';
-    }
-
-    /**
-     * @param array $numbers
-     *
-     * @return float|int
-     */
-    protected function calculateAll(array $numbers)
-    {
-        $number = array_pop($numbers);
-
-        if (count($numbers) <= 0) {
-            return $number;
-        }
-
-        return $this->calculate($this->calculateAll($numbers), $number);
-    }
-
-    /**
-     * @param int|float $number1
-     * @param int|float $number2
-     *
-     * @return int|float
-     */
-    protected function calculate($number1, $number2)
-    {
-        return $number1 + $number2;
     }
 }
